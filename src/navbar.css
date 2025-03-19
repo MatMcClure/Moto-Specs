@@ -1,0 +1,61 @@
+/* Full-width navbar */
+.navbar {
+  background-color: #333;
+  color: white;
+  padding: 10px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Navigation list (horizontal layout) */
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 100px;
+  padding: 0;
+  margin: 0;
+}
+
+/* Individual nav items */
+.nav-item {
+  position: relative;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background 0.3s ease;
+}
+
+.nav-item:hover {
+  background-color: #444;
+}
+
+/* Dropdown menu (hidden by default) */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: transparent;
+  color: white;
+  min-width: 150px;
+  padding: 0;
+  list-style: none;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+/* Dropdown items */
+.dropdown-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #9b9b9b;
+}
