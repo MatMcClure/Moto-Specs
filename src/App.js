@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
+import "./navbar.css"; // Import the CSS file
 import "./style.css";
-import "./App.css";
 
 function App() {
   return (
