@@ -125,3 +125,30 @@
 .dropdown-item:hover {
   background-color: #9b9b9b;
 }
+
+.bike-image {
+  width: 700px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  display: none;
+}
+
+.bike-image.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bike-stats {
+  opacity: 0;
+  transform: translateX(100%);
+  animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
