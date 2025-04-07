@@ -2,29 +2,84 @@ import React, { useState, useRef, useEffect } from "react";
 import "./navbar.css";
 import "./style.css";
 import rs660 from "./images/rs660.png";
-import tuonors660 from "./images/tuonors660.png"
+import tuonors660 from "./images/tuonors660.png";
 import rsv4 from "./images/rsv4.png";
 import tuonov4 from "./images/tuonov4.png";
+import cbr600rr from "./images/cbr600rr.png";
+import cbr1000rr from "./images/cbr1000rr.png";
+import cbr1000rrr from "./images/cbr1000rrr.png";
 
 const brands = {
   Aprilia: ["RS660", "Tuono RS660", "RSV4", "Tuono V4"],
   BMW: ["S1000RR", "M1000RR"],
   CFMoto: ["300SS", "450SS", "675SS"],
   Kawasaki: ["Ninja 500", "ZX4R", "ZX4RR", "ZX6R", "ZX10R", "ZX10RR", "H2R"],
-  Honda: ["CBR600RR", "CBR1000RR", "Africa Twin"],
+  Honda: ["CBR600RR", "CBR1000RR", "CBR1000RRR"],
   Suzuki: ["GXSR 600"],
   Triumph: ["Daytona 600", "Daytona 650", "Daytona 675"],
   Yamaha: ["R3", "R6", "R7", "R9", "R1"]
 };
 
-const imageMap = {
-  "RS660": rs660,
-  "Tuono RS660": tuonors660,
-  "RSV4": rsv4,
-  "Tuono V4": tuonov4
+const bikeData = {
+  RS660: {
+    name: "Aprilia RS660",
+    topSpeed: "140 mph / 225 km/h",
+    horsepower: "100 HP",
+    weight: "404 lbs (183 kg)",
+    torque: "49 lb-ft (67 Nm)",
+    image: rs660
+  },
+  "Tuono RS660": {
+    name: "Aprilia Tuono RS660",
+    topSpeed: "140 mph / 225 km/h",
+    horsepower: "100 HP",
+    weight: "403 lbs (183 kg)",
+    torque: "50 lb-ft (68 Nm)",
+    image: tuonors660
+  },
+  RSV4: {
+    name: "Aprilia RSV4",
+    topSpeed: "186 mph / 299 km/h",
+    horsepower: "217 HP",
+    weight: "445 lbs (202 kg)",
+    torque: "92 lb-ft (125 Nm)",
+    image: rsv4
+  },
+  "Tuono V4": {
+    name: "Aprilia Tuono V4",
+    topSpeed: "170 mph / 273 km/h",
+    horsepower: "175 HP",
+    weight: "459 lbs (208 kg)",
+    torque: "89 lb-ft (121 Nm)",
+    image: tuonov4
+  },
+  CBR600RR: {
+    name: "Honda CBR600RR",
+    topSpeed: "180 mph / 289 km/h",
+    horsepower: "189 HP",
+    weight: "432 lbs (195 kg)",
+    torque: "89 lb-ft (121 Nm)",
+    image: cbr600rr
+  },
+  CBR1000RR: {
+    name: "Honda CBR1000RR",
+    topSpeed: "180 mph / 289 km/h",
+    horsepower: "189 HP",
+    weight: "432 lbs (195 kg)",
+    torque: "89 lb-ft (121 Nm)",
+    image: cbr1000rr
+  },
+  CBR1000RRR: {
+    name: "Honda CBR1000RR-R Fireblade SP",
+    topSpeed: "180 mph / 289 km/h",
+    horsepower: "189 HP",
+    weight: "432 lbs (195 kg)",
+    torque: "89 lb-ft (121 Nm)",
+    image: cbr1000rrr
+  },
 };
 
-const Navbar = ({ onSelectImage }) => { // Pass down image selection function
+const Navbar = ({ onSelectBike }) => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [dropdownPosition, setDropdownPosition] = useState({ left: 0, top: 0 });
   const navRef = useRef(null);
@@ -51,8 +106,8 @@ const Navbar = ({ onSelectImage }) => { // Pass down image selection function
   };
 
   const handleModelClick = (model) => {
-    if (imageMap[model]) {
-      onSelectImage(imageMap[model]); // Update image when a model is clicked
+    if (bikeData[model]) {
+      onSelectBike(bikeData[model]); // Send bike stats and image to App.js
     }
   };
 

@@ -4,23 +4,32 @@ import "./navbar.css";
 import "./style.css";
 
 function App() {
-  const [selectedImage, setSelectedImage] = useState(null); // No image initially
+  const [selectedBike, setSelectedBike] = useState(null); // Store bike info
 
-  const handleImageSelect = (image) => {
-    setSelectedImage(image);
+  const handleBikeSelect = (bike) => {
+    setSelectedBike(bike); // Update selected bike info
   };
 
   return (
     <div className="App">
-      <Navbar onSelectImage={handleImageSelect} /> {/* Pass function to Navbar */}
+      <Navbar onSelectBike={handleBikeSelect} /> {/* Pass function to Navbar */}
 
       <header className="App-header">
-        {selectedImage && (
-          <img
-            src={selectedImage}
-            alt="Motorcycle"
-            className={`bike-image show`}
-          />
+        {selectedBike && (
+          <>
+            <h2>{selectedBike.name}</h2>
+            <img
+              src={selectedBike.image}
+              alt={selectedBike.name}
+              className="bike-image show"
+            />
+            <div className="bike-stats">
+              <p><strong>Top Speed:</strong> {selectedBike.topSpeed}</p>
+              <p><strong>Horsepower:</strong> {selectedBike.horsepower}</p>
+              <p><strong>Weight:</strong> {selectedBike.weight}</p>
+              <p><strong>Torque:</strong> {selectedBike.torque}</p>
+            </div>
+          </>
         )}
       </header>
     </div>
