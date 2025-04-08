@@ -1,5 +1,6 @@
 body {
   background: #121212;
+  overflow-x: hidden;
 }
 
 @media only screen and (max-width: 600px) {
@@ -25,3 +26,80 @@ body {
   text-align: center;
 }
 
+.bike-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bike-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.marquee-text {
+  position: absolute;
+  top: 12%;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+  z-index: 0;
+  opacity: 0.1;
+  animation: marquee 20s linear infinite;
+  color: white;
+}
+
+.marquee-text h1 {
+  display: inline-block;
+  font-size: 8rem;
+  font-weight: bold;
+  color: white !important;
+  padding-left: 100%;
+  background-color: transparent;
+  padding: 0px;
+}
+
+.bike-stats {
+  position: relative;
+  z-index: 10;
+  color: white;
+  text-align: center;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.bike-image {
+  position: relative;
+  z-index: 10;
+  width: 700px;
+  height: auto;
+  margin: 2rem 0;
+}
+
+.bike-stats {
+  position: relative;
+  z-index: 10;
+  color: white;
+  text-align: center;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
