@@ -1,20 +1,23 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./navbar.css";
 import "./style.css";
-import rs660 from "./images/rs660.png";
-import tuonors660 from "./images/tuonors660.png";
-import rsv4 from "./images/rsv4.png";
-import tuonov4 from "./images/tuonov4.png";
-import cbr600rr from "./images/cbr600rr.png";
-import cbr1000rr from "./images/cbr1000rr.png";
-import cbr1000rrr from "./images/cbr1000rrr.png";
+import rs660 from "./images/bike-images/rs660.png";
+import tuonors660 from "./images/bike-images/tuonors660.png";
+import rsv4 from "./images/bike-images/rsv4.png";
+import tuonov4 from "./images/bike-images/tuonov4.png";
+import cbr600rr from "./images/bike-images/cbr600rr.png";
+import cbr1000rr from "./images/bike-images/cbr1000rr.png";
+import cbr1000rrr from "./images/bike-images/cbr1000rrr.png";
 
 const brands = {
   Aprilia: ["RS660", "Tuono RS660", "RSV4", "Tuono V4"],
   BMW: ["S1000RR", "M1000RR"],
   CFMoto: ["300SS", "450SS", "675SS"],
+  Ducati: ["V2", "V4", "V4S", "V4R"],
   Kawasaki: ["Ninja 500", "ZX4R", "ZX4RR", "ZX6R", "ZX10R", "ZX10RR", "H2R"],
+  KTM: [""],
   Honda: ["CBR600RR", "CBR1000RR", "CBR1000RRR"],
+  "MV Agusta": ["F3"],
   Suzuki: ["GXSR 600"],
   Triumph: ["Daytona 600", "Daytona 650", "Daytona 675"],
   Yamaha: ["R3", "R6", "R7", "R9", "R1"]
@@ -55,7 +58,7 @@ const bikeData = {
   },
   CBR600RR: {
     name: "Honda CBR600RR",
-    topSpeed: "180 mph / 289 km/h",
+    topSpeed: "160 mph / 289 km/h",
     horsepower: "189 HP",
     weight: "432 lbs (195 kg)",
     torque: "89 lb-ft (121 Nm)",
@@ -71,7 +74,7 @@ const bikeData = {
   },
   CBR1000RRR: {
     name: "Honda CBR1000RR-R Fireblade SP",
-    topSpeed: "180 mph / 289 km/h",
+    topSpeed: "186 mph / 289 km/h",
     horsepower: "189 HP",
     weight: "432 lbs (195 kg)",
     torque: "89 lb-ft (121 Nm)",
