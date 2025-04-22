@@ -144,3 +144,106 @@ body {
     transform: translateY(0);
   }
 }
+
+/* Home CSS */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+}
+
+.aprilia-logo-wrapper {
+  width: 1000px;
+  grid-column: span 5;
+  border: 2px solid white;
+}
+
+.aprilia-logo {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.bike-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1000px;
+  border: 1px solid white;
+}
+
+.bike-card {
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid white;
+}
+
+.bike-card img {
+  width: 100%;
+  height: auto;
+  max-height: 120px;
+  object-fit: contain;
+}
+
+/*HAMBURGER*/
+.hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 20px;
+  width: 30px;
+  margin-right: 20px;
+  position: absolute; /* Place the button at the top-left corner */
+  top: 12px;
+  left: 10px;
+  z-index: 1001;
+}
+
+.hamburger .bar {
+  width: 100%;
+  height: 4px;
+  background-color: white;
+  border-radius: 2px;
+  transition: 0.3s ease;
+}
+
+.sidebar.open .hamburger {
+  display: none; /* Just in case, ensures the hamburger is hidden */
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px; /* Hidden off-screen initially */
+  width: 250px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+
+.sidebar.open {
+  left: 0; /* Slide into view */
+}
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 20px;
+}
+
+.sidebar nav ul li {
+  margin: 15px 0;
+  color: white;
+  cursor: pointer;
+}
+
+.sidebar nav ul li:hover {
+  color: #ff9800; /* Highlight on hover */
+}

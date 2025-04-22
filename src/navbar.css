@@ -53,7 +53,7 @@
 /* Individual nav items */
 .nav-item {
   position: relative;
-  padding: 10px 15px;
+  padding: 10px 5px;
   cursor: pointer;
   font-size: 18px;
   transition: background 0.3s ease;
@@ -152,4 +152,3 @@
     transform: translateX(0);
   }
 }
-
