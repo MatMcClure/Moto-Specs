@@ -19,6 +19,7 @@ import tuonov4 from "./images/bike-images/tuonov4.png";
 import cbr600rr from "./images/bike-images/cbr600rr.png";
 import cbr1000rr from "./images/bike-images/cbr1000rr.png";
 import cbr1000rrr from "./images/bike-images/cbr1000rrr.png";
+import gsxr750 from "./images/bike-images/gsxr750.png";
 
 const brands = {
   Aprilia: {
@@ -43,7 +44,7 @@ const brands = {
   },
   KTM: {
     logo: ktm,
-    models: [""]
+    models: ["RC 8C", "RC390"]
   },
   Honda: {
     logo: honda,
@@ -55,7 +56,7 @@ const brands = {
   },
   Suzuki: {
     logo: suzuki,
-    models: ["GXSR 600"]
+    models: ["GXS-R600", "GSX-R750", "GSX-R1000", "GSX-R1000R", "Hayabusa"]
   },
   Triumph: {
     logo: triumph,
@@ -80,7 +81,7 @@ const bikeData = {
     name: "Aprilia Tuono RS660",
     topSpeed: "140 mph / 225 km/h",
     horsepower: "100 HP",
-    weight: "403 lbs (183 kg)",
+    weight: "404 lbs (183 kg)",
     torque: "50 lb-ft (68 Nm)",
     image: tuonors660
   },
@@ -124,6 +125,15 @@ const bikeData = {
     torque: "89 lb-ft (121 Nm)",
     image: cbr1000rrr
   },
+
+  "GSX-R750": {
+    name: "GSX-R750",
+    topSpeed: "170 mph / 273 km/h",
+    horsepower: "121 HP",
+    weight: "419",
+    torque: "53 lb-ft (71 Nm)",
+    image: gsxr750
+  }
 };
 
 const Navbar = ({ onSelectBike }) => {

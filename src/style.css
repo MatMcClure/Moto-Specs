@@ -150,13 +150,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px;
+  padding: 30px;
 }
 
 .aprilia-logo-wrapper {
   width: 1000px;
   grid-column: span 5;
-  border: 2px solid white;
+  border: 10px solid white;
 }
 
 .aprilia-logo {
@@ -170,14 +170,14 @@ body {
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   width: 100%;
-  max-width: 1000px;
-  border: 1px solid white;
+  max-width: 1500px;
+  margin-top: 1%;
 }
 
 .bike-card {
   text-align: center;
   cursor: pointer;
-  border: 1px solid white;
+  border: 10px solid white;
 }
 
 .bike-card img {
