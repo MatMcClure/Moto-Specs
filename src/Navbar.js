@@ -19,7 +19,11 @@ import tuonov4 from "./images/bike-images/tuonov4.png";
 import cbr600rr from "./images/bike-images/cbr600rr.png";
 import cbr1000rr from "./images/bike-images/cbr1000rr.png";
 import cbr1000rrr from "./images/bike-images/cbr1000rrr.png";
+import gsxr600 from "./images/bike-images/gsxr600.png";
 import gsxr750 from "./images/bike-images/gsxr750.png";
+import gsxr1000 from "./images/bike-images/gsxr1000.png";
+import gsxr1000r from "./images/bike-images/gsxr1000r.png";
+import hayabusa from "./images/bike-images/hayabusa.png";
 
 const brands = {
   Aprilia: {
@@ -56,11 +60,11 @@ const brands = {
   },
   Suzuki: {
     logo: suzuki,
-    models: ["GXS-R600", "GSX-R750", "GSX-R1000", "GSX-R1000R", "Hayabusa"]
+    models: ["GSX-R600", "GSX-R750", "GSX-R1000", "GSX-R1000R", "Hayabusa"]
   },
   Triumph: {
     logo: triumph,
-    models: ["Daytona 600", "Daytona 650", "Daytona 675"]
+    models: ["Daytona 650", "Daytona 675r"]
   },
   Yamaha: {
     logo: yamaha,
@@ -125,7 +129,14 @@ const bikeData = {
     torque: "89 lb-ft (121 Nm)",
     image: cbr1000rrr
   },
-
+  "GSX-R600": {
+    name: "GSX-R600",
+    topSpeed: "170 mph / 273 km/h",
+    horsepower: "121 HP",
+    weight: "419",
+    torque: "53 lb-ft (71 Nm)",
+    image: gsxr600
+  },
   "GSX-R750": {
     name: "GSX-R750",
     topSpeed: "170 mph / 273 km/h",
@@ -133,12 +144,37 @@ const bikeData = {
     weight: "419",
     torque: "53 lb-ft (71 Nm)",
     image: gsxr750
+  },
+  "GSX-R1000": {
+    name: "GSX-R1000",
+    topSpeed: "170 mph / 273 km/h",
+    horsepower: "121 HP",
+    weight: "419",
+    torque: "53 lb-ft (71 Nm)",
+    image: gsxr1000
+  },
+  "GSX-R1000R": {
+    name: "GSX-R1000R",
+    topSpeed: "170 mph / 273 km/h",
+    horsepower: "121 HP",
+    weight: "419",
+    torque: "53 lb-ft (71 Nm)",
+    image: gsxr1000r
+  },
+  Hayabusa: {
+    name: "Hayabusa",
+    topSpeed: "170 mph / 273 km/h",
+    horsepower: "121 HP",
+    weight: "419",
+    torque: "53 lb-ft (71 Nm)",
+    image: hayabusa
   }
 };
 
 const Navbar = ({ onSelectBike }) => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [dropdownPosition, setDropdownPosition] = useState({ left: 0, top: 0 });
+  const [selectedBrand, setSelectedBrand] = useState(null); // added
   const navRef = useRef(null);
   const dropdownRef = useRef(null);
 
@@ -162,53 +198,56 @@ const Navbar = ({ onSelectBike }) => {
     setDropdownPosition({ left: rect.left + window.scrollX, top: rect.bottom + window.scrollY });
   };
 
+  const handleBrandClick = (brand) => {
+    setSelectedBrand(brand);
+  };
+
   const handleModelClick = (model) => {
     if (bikeData[model]) {
-      onSelectBike(bikeData[model]); // Send bike stats and image to App.js
+      onSelectBike(bikeData[model]);
     }
   };
 
   return (
     <nav className="navbar" ref={navRef}>
       <div className="navbar-wrapper">
-      <ul className="nav-list">
-  {Object.entries(brands).map(([brand, data]) => (
-    <li
-      key={brand}
-      className="nav-item"
-      onMouseEnter={(e) => handleMouseEnter(e, brand)}
-    >
-      <img
-        src={data.logo}
-        alt={`${brand} logo`}
-        style={{ width: "20px", height: "20px", marginRight: "8px", verticalAlign: "middle" }}
-      />
-      {brand}
-    </li>
-  ))}
-</ul>
-
+        <ul className="nav-list">
+          {Object.entries(brands).map(([brand, data]) => (
+            <li
+              key={brand}
+              className={`nav-item ${selectedBrand === brand ? 'active' : ''}`}
+              onMouseEnter={(e) => handleMouseEnter(e, brand)}
+              onClick={() => handleBrandClick(brand)}
+            >
+              <img
+                src={data.logo}
+                alt={`${brand} logo`}
+                style={{ width: "20px", height: "20px", marginRight: "8px", verticalAlign: "middle" }}
+              />
+              {brand}
+            </li>
+          ))}
+        </ul>
       </div>
 
       {openDropdown && (
-  <ul
-    className="dropdown"
-    ref={dropdownRef}
-    style={{
-      position: "absolute",
-      left: `${dropdownPosition.left}px`,
-      top: `${dropdownPosition.top}px`,
-      zIndex: 2000
-    }}
-  >
-    {brands[openDropdown].models.map((model) => (
-      <li key={model} className="dropdown-item" onClick={() => handleModelClick(model)}>
-        {model}
-      </li>
-    ))}
-  </ul>
-)}
-
+        <ul
+          className="dropdown"
+          ref={dropdownRef}
+          style={{
+            position: "absolute",
+            left: `${dropdownPosition.left}px`,
+            top: `${dropdownPosition.top}px`,
+            zIndex: 2000
+          }}
+        >
+          {brands[openDropdown].models.map((model) => (
+            <li key={model} className="dropdown-item" onClick={() => handleModelClick(model)}>
+              {model}
+            </li>
+          ))}
+        </ul>
+      )}
     </nav>
   );
 };

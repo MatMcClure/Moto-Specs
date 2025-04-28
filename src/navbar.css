@@ -69,9 +69,15 @@
   }
 }
 
-.nav-item:hover {
-  background-color: #444;
+.nav-item:hover,
+.nav-item.active {
+  background-color: rgba(255, 255, 255, 0.5);
 }
+
+.nav-item.active {
+  background-color: rgba(255, 255, 255, 0.5); /* same as hover */
+}
+
 
 /* Dropdown menu (hidden by default) */
 .dropdown {
