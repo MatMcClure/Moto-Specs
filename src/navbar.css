@@ -1,15 +1,22 @@
 /* Full-width navbar */
 .navbar {
-  background-color: #333;
-  color: white;
-  padding: 1px 0;
-  width: 100%;
   display: flex;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 20px;
+  background-color: #111;
+  position: relative;
+  flex-wrap: wrap;
+  gap: 10px;
   z-index: 1000;
+}
+
+.navbar-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  width: 100%;
 }
 
 @media only screen and (max-width: 600px) {
@@ -33,11 +40,13 @@
 
 /* Navigation list (horizontal layout) */
 .nav-list {
-  list-style: none;
   display: flex;
-  gap: 80px;
+  flex-wrap: wrap;
+  list-style: none;
   padding: 0;
   margin: 0;
+  gap: 10px;
+  flex: 1;
 }
 
 @media only screen and (max-width: 600px) {
@@ -52,11 +61,16 @@
 
 /* Individual nav items */
 .nav-item {
-  position: relative;
-  padding: 10px 5px;
+  color: white;
+  padding: 5px 10px;
   cursor: pointer;
-  font-size: 18px;
-  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  background-color: #222;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 1rem;
+  transition: background-color 0.2s;
 }
 
 @media only screen and (max-width: 600px) {
@@ -69,30 +83,41 @@
   }
 }
 
-.nav-item:hover,
-.nav-item.active {
-  background-color: rgba(255, 255, 255, 0.5);
+.nav-item:hover
+/*.nav-item.active*/ {
+  background-color: #333;
 }
-
-.nav-item.active {
-  background-color: rgba(255, 255, 255, 0.5); /* same as hover */
-}
-
 
 /* Dropdown menu (hidden by default) */
 .dropdown {
   position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-20%); /* Center the dropdown horizontally */
-  background-color: #333;
-  color: white;
-  min-width: 100px;
-  padding: 0;
+  background-color: #222;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 10px;
   list-style: none;
-  border-radius: 5px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-  z-index: 100;
+  width: max-content;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.dropdown-item {
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #444;
+}
+
+.dropdown::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 20px; /* you can calculate this dynamically too */
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #1a1a1a;
 }
 
 @media only screen and (max-width: 600px) {
@@ -112,13 +137,6 @@
   }
 }
 
-/* Dropdown items */
-.dropdown-item {
-  padding: 10px 15px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
 @media only screen and (max-width: 600px) {
   .dropdown-item {
     font-size: 8px;
@@ -126,10 +144,6 @@
     cursor: pointer;
     transition: background 0.3s ease;
   }
-}
-
-.dropdown-item:hover {
-  background-color: #9b9b9b;
 }
 
 .bike-image {
@@ -157,4 +171,36 @@
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+@keyframes popout {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.popout-animation {
+  animation: popout 0.3s ease;
+}
+
+.back-button {
+  background-color: #222;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 0.75rem;
+  margin-left: auto; /* push to far right in flex container */
+}
+
+.back-button:hover {
+  background-color: #374151;
 }

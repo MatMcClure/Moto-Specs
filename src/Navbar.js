@@ -16,6 +16,10 @@ import rs660 from "./images/bike-images/rs660.png";
 import tuonors660 from "./images/bike-images/tuonors660.png";
 import rsv4 from "./images/bike-images/rsv4.png";
 import tuonov4 from "./images/bike-images/tuonov4.png";
+import panigalev2 from "./images/bike-images/panigalev2.png";
+import panigalev4 from "./images/bike-images/panigalev4.png";
+import panigalev4s from "./images/bike-images/panigalev4s.png";
+import panigalev4r from "./images/bike-images/panigalev4r.png";
 import cbr600rr from "./images/bike-images/cbr600rr.png";
 import cbr1000rr from "./images/bike-images/cbr1000rr.png";
 import cbr1000rrr from "./images/bike-images/cbr1000rrr.png";
@@ -28,7 +32,7 @@ import hayabusa from "./images/bike-images/hayabusa.png";
 const brands = {
   Aprilia: {
     logo: aprilia,
-    models: ["RS660", "Tuono RS660", "RSV4", "Tuono V4"]
+    models: ["RS660", "Tuono RS660", "RSV4", "Tuono V4"],
   },
   BMW: {
     logo: bmw,
@@ -40,7 +44,7 @@ const brands = {
   },
   Ducati: {
     logo: ducati,
-    models: ["V2", "V4", "V4S", "V4R"]
+    models: ["Panigale V2", "Panigale V4", "Panigale V4S", "Panigale V4R"]
   },
   Kawasaki: {
     logo: kawasaki,
@@ -104,6 +108,38 @@ const bikeData = {
     weight: "459 lbs (208 kg)",
     torque: "89 lb-ft (121 Nm)",
     image: tuonov4
+  },
+  "Panigale V2": {
+    name: "Panigale V2",
+    topSpeed: "170 mph / 273 km/h",
+    horsepower: "121 HP",
+    weight: "419",
+    torque: "53 lb-ft (71 Nm)",
+    image: panigalev2
+  },
+  "Panigale V4": {
+    name: "Panigale V4",
+    topSpeed: "170 mph / 273 km/h",
+    horsepower: "121 HP",
+    weight: "419",
+    torque: "53 lb-ft (71 Nm)",
+    image: panigalev4
+  },
+  "Panigale V4S": {
+    name: "Panigale V4S",
+    topSpeed: "170 mph / 273 km/h",
+    horsepower: "121 HP",
+    weight: "419",
+    torque: "53 lb-ft (71 Nm)",
+    image: panigalev4s
+  },
+  "Panigale V4R": {
+    name: "Panigale V4R",
+    topSpeed: "170 mph / 273 km/h",
+    horsepower: "121 HP",
+    weight: "419",
+    torque: "53 lb-ft (71 Nm)",
+    image: panigalev4r
   },
   CBR600RR: {
     name: "Honda CBR600RR",
@@ -172,7 +208,7 @@ const bikeData = {
 };
 
 const Navbar = ({ onSelectBike }) => {
-  const [openDropdown, setOpenDropdown] = useState(null);
+  const [activeBrand, setActiveBrand] = useState(null);
   const [dropdownPosition, setDropdownPosition] = useState({ left: 0, top: 0 });
   const [selectedBrand, setSelectedBrand] = useState(null); // added
   const navRef = useRef(null);
@@ -184,18 +220,27 @@ const Navbar = ({ onSelectBike }) => {
         navRef.current && !navRef.current.contains(event.target) &&
         dropdownRef.current && !dropdownRef.current.contains(event.target)
       ) {
-        setOpenDropdown(null);
+        setActiveBrand(null);
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+  
 
   const handleMouseEnter = (e, brand) => {
-    setOpenDropdown(brand);
+    setActiveBrand(brand);
     const rect = e.target.getBoundingClientRect();
-    setDropdownPosition({ left: rect.left + window.scrollX, top: rect.bottom + window.scrollY });
+  
+    const dropdownWidth = 150; // Set this to the actual width of your dropdown in px
+  
+    const centerLeft = rect.left + rect.width / 2 - dropdownWidth / 2;
+  
+    setDropdownPosition({
+      left: centerLeft + window.scrollX,
+      top: rect.bottom + window.scrollY,
+    });
   };
 
   const handleBrandClick = (brand) => {
@@ -211,6 +256,16 @@ const Navbar = ({ onSelectBike }) => {
   return (
     <nav className="navbar" ref={navRef}>
       <div className="navbar-wrapper">
+      <button
+      className="back-button"
+        onClick={() => {
+          setSelectedBrand(null);
+          setActiveBrand(null);
+          onSelectBike(null);
+        }}
+        >
+        <h1>⬅</h1>
+        </button>
         <ul className="nav-list">
           {Object.entries(brands).map(([brand, data]) => (
             <li
@@ -230,18 +285,17 @@ const Navbar = ({ onSelectBike }) => {
         </ul>
       </div>
 
-      {openDropdown && (
+      {activeBrand && (
         <ul
           className="dropdown"
-          ref={dropdownRef}
           style={{
             position: "absolute",
-            left: `${dropdownPosition.left}px`,
             top: `${dropdownPosition.top}px`,
+            left: `${dropdownPosition.left}px`,
             zIndex: 2000
           }}
         >
-          {brands[openDropdown].models.map((model) => (
+          {brands[activeBrand].models.map((model) => (
             <li key={model} className="dropdown-item" onClick={() => handleModelClick(model)}>
               {model}
             </li>
