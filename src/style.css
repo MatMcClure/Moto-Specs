@@ -218,4 +218,22 @@ body {
   font-size: 16px;
   z-index: 10;
   font-weight: 1000;
+  animation: fadeInUp 0.6s ease-out forwards;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+.audio-player {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 5;
+}
+
+.audio-player audio {
+  width: 300px;
 }

@@ -28,6 +28,7 @@ import gsxr750 from "./images/bike-images/gsxr750.png";
 import gsxr1000 from "./images/bike-images/gsxr1000.png";
 import gsxr1000r from "./images/bike-images/gsxr1000r.png";
 import hayabusa from "./images/bike-images/hayabusa.png";
+import rs660Audio from "./audio/rs660.mp3";
 
 const brands = {
   Aprilia: {
@@ -78,12 +79,14 @@ const brands = {
 
 const bikeData = {
   RS660: {
+    msrp: "11,759",
     name: "Aprilia RS660",
     topSpeed: "140 mph / 225 km/h",
     horsepower: "100 HP",
     weight: "404 lbs (183 kg)",
     torque: "49 lb-ft (67 Nm)",
-    image: rs660
+    image: rs660,
+    audio: rs660Audio
   },
   "Tuono RS660": {
     name: "Aprilia Tuono RS660",

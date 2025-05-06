@@ -29,7 +29,7 @@ function App() {
   {/* Top-left paragraph section */}
   {selectedBike && selectedBike.name === "Aprilia RS660" && (
     <div className="bike-description">
-        <p>
+        <p className="fade-in">
           The Aprilia RS660 redefines the middleweight sportbike segment by
           blending advanced electronics, lightweight agility, and everyday
           usability. With a 659cc parallel-twin engine and aerodynamic design, it
@@ -56,6 +56,14 @@ function App() {
           </>
         )}
       </header>
+      {selectedBike && selectedBike.audio && (
+  <div className="audio-player">
+    <audio controls>
+      <source src={selectedBike.audio} type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+)}
     </div>
   );
 }
@@ -65,6 +73,9 @@ function BikeDisplay({ bike }) {
     <>
       <img src={bike.image} alt={bike.name} className="bike-image show" />
       <div className="bike-stats">
+        <p className="fade-in">
+          <strong>MSRP:</strong> ${bike.msrp}
+        </p>
         <p className="fade-in"><strong>Name:</strong> {bike.name}</p>
         <p className="fade-in"><strong>Top Speed:</strong> {bike.topSpeed}</p>
         <p className="fade-in"><strong>Horsepower:</strong> {bike.horsepower}</p>
